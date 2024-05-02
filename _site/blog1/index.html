@@ -1,0 +1,65 @@
+<h1><a href="/blog"> < </a></h1>
+<div style="text-align: right;">
+    <h1><a href="/index">HOME</a></h1>
+</div>
+<h1>Blog Post 1</h1>
+<h2><em>CLI Script</em></h2>
+<hr>
+<p><a href="https://www.techtarget.com/searchwindowsserver/definition/command-line-interface-CLI"><strong>CLI</strong></a>, command-line interface, is code that takes text inputs to execute an operating system in a terminal or command prompt rather than other interfaces. You can use it to run programs, manage, and navigate files. One of the many ways this can be used is to create <a href="https://www.freecodecamp.org/news/whats-boilerplate-and-why-do-we-use-it-let-s-check-out-the-coding-style-guide-ac2b6c814ee7/#:~:text=In%20Information%20Technology%2C%20a%20boilerplate,make%20abundant%20use%20of%20boilerplates."><strong>boilerplates</strong></a> for starting projects, and there are many advantages to doing it this way. Efficiency, flexibility, and consistency are the biggest benifits to creating something this way. You are able to quickly generate the basic structure of the project without having to manually create each directory and file. With the basic script you can customize it based on the project requirements and change it up as needed for new projects.</p>
+<h5>Prerequisites</h5>
+<ul>
+<li>CLI tools installed</li>
+<li>Basic knowledge of CLI/Linux <a href="https://www.w3schools.com/whatis/whatis_cli.asp">commands</a></li>
+<li>Basic knowledge of <a href="https://www.howtogeek.com/67469/the-beginners-guide-to-shell-scripting-the-basics/">Shell Scripting</a></li>
+<li>Basic HTML and CSS</li>
+</ul>
+<hr>
+<h4><em><strong>Install Linux Bash Shell</strong></em></h4>
+<p>Have the Linux tools <a href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">installed</a> to use the command prompt terminal</p>
+<hr>
+<h4><em><strong>Boilerplate Script</strong></em></h4>
+<p><strong>Step 1:</strong> Start by adding lines to create a new project and open the project</p>
+<pre><code class="language-sh">#!/bin/bash
+
+mkdir project
+cd project
+</code></pre>
+<p><strong>Step 2:</strong> Create subdirectories inside the project to work in seperatly and open the <code>site</code>directory, then create more subdirectories in the <code>site</code> and <strong>cd</strong> back out to the main project directory</p>
+<pre><code class="language-sh">mkdir images scripts styles site 
+cd site 
+
+mkdir pages posts comments
+cd..
+</code></pre>
+<p><strong>Step 3:</strong> Create an index file in the <code>project</code> directory and a styles file inside the <code>style</code> subdirectory</p>
+<pre><code class="language-sh">touch index.html
+touch styles/styles.css
+</code></pre>
+<p><strong>Step 4:</strong> Now you are going to create the content for the page, first line by line add the basic heading using the command <strong><code>echo</code></strong> into the file you want to add it to, we will be adding it to the <code>index</code> file</p>
+<pre><code class="language-sh">echo &quot;&lt;!DOCTYPE html&gt;&quot; &gt;&gt; index.html
+echo &quot;&lt;html&gt;&quot; &gt;&gt; index.html
+echo &quot;  &lt;head&gt; &quot; &gt;&gt; index.html
+echo &quot;      &lt;meta charset=\&quot;utf-8\&quot;&gt; &quot; &gt;&gt; index.html
+echo &quot;      &lt;meta name=\&quot;viewport\&quot; content=\&quot;width=device-width, initial-scale=1.0\&quot;&gt; &quot; &gt;&gt; index.html
+echo &quot;      &lt;link rel=\&quot;stylesheet\&quot; href=\&quot;styles/styles.css\&quot;&gt; &quot; &gt;&gt; index.html
+echo &quot;  &lt;/head&gt; &quot; &gt;&gt; index.html
+echo &quot;  &lt;body&gt; &quot; &gt;&gt; index.html
+
+</code></pre>
+<p><strong>Step 5:</strong> Once you have hit the body, you can now start to add the content that you will see on the page</p>
+<pre><code class="language-sh">(YOUR HTML CODE HERE...)
+
+echo &quot; &lt;body&gt;&quot; &gt;&gt; &lt;h1&gt; HELLO WORLD, THIS IS MY SITE &lt;h1&gt;
+
+echo &quot;  &lt;/body&gt;&quot; &gt;&gt; index.html
+echo &quot;&lt;/html&gt;&quot; &gt;&gt; index.html
+</code></pre>
+<p><strong>Step 6:</strong> Once you have the HTML aspect writen you can add CSS style to the <code>styles</code> file</p>
+<pre><code class="language-sh">(CSS CODE HERE...)
+echo &quot;------&quot; &gt;&gt; styles/styles.css
+</code></pre>
+<p>Now you have created a basic boilerplate for a project and some added HTML and CSS to the page</p>
+<hr>
+<h4><em><strong>How it can be used</strong></em></h4>
+<p>CLI and bash shell boilerplate is a great way to do a repetitive coding task to save time and a great way to learn about Unix-based systems. It's a more efficient, effective, and versatile system of doing it and can be put to great use.</p>
+<hr>

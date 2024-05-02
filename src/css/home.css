@@ -1,0 +1,218 @@
+body {
+  background-color: rgb(147, 187, 255);
+}
+
+p {
+  font-size: 25px;
+  text-align: center;
+  font-family: 'Mukta', sans-serif;
+}
+
+nav { 
+    background-color: #3a94fa; 
+    padding: 1rem 2rem; /*-- inside padding --*/
+    display: flex; /*-- nav is a flex container --*/
+    min-height: 6rem; 
+    
+    align-items: center; 
+    z-index: 2;
+  }
+
+  nav h1 {
+    transform: translate(-100px, -10px);
+    font-size: 40px;
+    font-family: 'Mukta', sans-serif;
+  }
+
+  nav a { 
+    font-family: 'Mukta', sans-serif;
+    font-size: 25px;
+    padding-left: 2rem; 
+    color: #c2bfbf; 
+    
+    text-decoration: none; 
+    transition: all .2s ease-in-out; 
+    justify-content: flex-end;
+  }
+  nav a:hover { 
+    color: #466aad;
+  }
+  
+  nav img {
+    z-index: 1;
+    height: 150px;
+    width: 200px;
+    margin-right: auto;
+  }
+  img {
+    border-radius:25px;
+    transition: all 0.2s ease-in-out;
+  }
+  img:hover {
+    border-radius: 50%;
+  }
+
+
+  .img-1 img {
+    display: flex; /*-- declares a flex container --*/
+    justify-content: center; /*-- center in the main axis --*/
+    align-items: center; /*-- center in the cross axis --*/
+    height: 35rem; 
+    width: 600rem;
+    border-radius: 5px;
+    position: relative; /*-- allows explicit positioning for children --*/
+  }
+  
+  
+  
+  
+  
+  a#trigram { 
+    display: none; 
+    font-size: 3rem; 
+    align-self: stretch; /*-- tells it to fill the cross axis when present --*/
+  
+  margin-top: 40px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    a.nav-link {
+      display: none;
+    }
+    a#trigram {
+      display: inherit;
+    }
+  }
+
+  main {
+    padding: 1rem 1rem; /*-- adds inside space around the main content area --*/
+  }
+  
+  .grid-cont { 
+    padding: 2rem 0; 
+    display: grid; 
+    grid-gap: 2rem; 
+    grid-template-columns: 1fr; 
+  }
+  
+  @media screen and (min-width: 550px) { /*-- at slightly larger size, there are two equal columns --*/
+    .grid-cont {grid-template-columns: repeat(2, 1fr);}
+  }
+  @media screen and (min-width: 768px) { /*-- still two equal columns --*/
+    .grid-cont {grid-template-columns: repeat(2, 1fr);}
+  }
+  @media screen and (min-width: 1280px) { /*-- next size up, there are three equal columns --*/
+    .grid-cont {grid-template-columns: repeat(3, 1fr);}
+  }
+  
+  
+  
+  
+  
+  
+  .card {
+    padding: 1%; 
+    display: flex; 
+    flex-direction: column; 
+    border-radius: 15px; 
+    background-color: #192a60; 
+    box-shadow: 0 3px 10px rgba(0,0,0,.5);
+  }
+  .card:hover {
+    box-shadow: 0 3px 30px rgba(0,0,0,.5);
+  }
+  
+  
+  .header_img {
+    position: relative;
+  }
+  .header_img  img {
+    border-radius: 15px 15px 0px 0px;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+  }
+  .header_img  button {
+    background-color: rgba(0,0,0,0.5);
+    font-size: 20px;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: whitesmoke;
+    z-index: 5;
+    clip-path:circle(45%);
+  }
+  .header_img  button:hover {
+    background-color: rgba(207, 205, 205, 0.5);
+  }
+  .header_img .material-symbols-outlined {
+    font-size: 5rem;
+    font-variation-settings: 'wght' 400;
+  }
+  
+  
+  
+  .card-text {
+  
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Mukta', sans-serif;
+    font-family: 'Nunito', sans-serif;
+  
+    justify-content: space-between;
+  
+    font-size: 20px;
+    color: #dedcdc;
+  
+    text-align: center;
+  
+   margin-right: 10px;
+  
+    overflow: hidden;
+    word-wrap: break-word;
+  
+  }
+  
+    
+
+
+
+
+
+
+
+
+
+
+.card_container {
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 200px;
+    padding: 0;
+    border-radius: 0.5rem;
+}
+
+.card_container--raised {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.card_title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card_link {
+    color: #007bff;
+}
+.card_link:hover {
+    text-decoration: underline;
+}
+
+
+

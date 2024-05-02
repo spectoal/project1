@@ -1,0 +1,22 @@
+{
+  "name": "frame_work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx eleventy --serve",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "npx tailwindcss -i src/tailwindstyle.css -o dist/tailwindstyle.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "common-tags": "^1.8.2",
+    "daisyui": "^4.10.2"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}

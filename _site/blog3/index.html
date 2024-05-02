@@ -1,0 +1,112 @@
+ <h1><a href="/blog"> < </a></h1>
+<div style="text-align: right;">
+    <h1><a href="/index">HOME</a></h1>
+</div>
+<h1>Blog Post 3</h1>
+<h2><em>Creating a SSG- Static Site Generator</em></h2>
+<hr>
+<p><a href="https://www.storyblok.com/mp/static-sites-vs-dynamic-sites?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=PBA_DSA_Headless&amp;gad_source=1&amp;gclid=EAIaIQobChMIpvyU3MXthQMVFWVHAR20VwGXEAAYASAAEgLlxvD_BwE"><strong>SSG</strong></a> or static site generators is a tool used to generate a static website from various data sources. A SSG pre-builds HTML files and deals with converting raw data into a complete site with HTML, CSS and JavaScript with templates that are used for consistant styling. It quickly loads and provides a faster browsing experience. The maintenance is very easy and orginizes content well without it being too complex.</p>
+<h5>Prerequisites</h5>
+<ul>
+<li>Basic knowledge of CLI/Linux <a href="https://www.w3schools.com/whatis/whatis_cli.asp">commands</a> and program</li>
+<li>Basic knowledge of <a href="https://www.markdownguide.org/getting-started/">MarkDown</a></li>
+<li>Basic HTML and CSS and JavaScript</li>
+<li>Custom Domain Name (Id suggest <a href="https://porkbun.com">Porkbun</a>)</li>
+<li>Digital Ocean account</li>
+</ul>
+<hr>
+<h4><em><strong>Sign up for Digital Ocean</strong></em></h4>
+<p>Create a <a href="https://www.digitalocean.com">Digital Ocean</a> account and walk thorugh the <a href="https://www.digitalocean.com/product-tours/droplets">tour</a> to get comfortable with the interface</p>
+<hr>
+<h4><em><strong>Creating Digital Ocean Droplet</strong></em></h4>
+<p><strong>Step 1:</strong> Start by creating a new droplet on your Digital Ocean account</p>
+<ul>
+<li>Hit the green <strong>CREATE</strong> button at the top right</li>
+<li>Click <strong>DROPLETS</strong></li>
+</ul>
+<p><strong>Step 2:</strong> Follow the next steps in setting up the Droplet</p>
+<ul>
+<li>Choose your region</li>
+<li><strong>UBUNTU</strong> verson <strong>22.10x64</strong></li>
+<li>Choose the size, I suggest the <strong>BASIC</strong></li>
+<li>Then choose a way to authenticate, I suggest the <strong>PASSWORD</strong></li>
+<li>Finally the little details <strong>1</strong> dropplet</li>
+<li>A <strong>HOSTNAME</strong> that is unique and you will remember it by</li>
+<li>Then click <strong>CREATE DROPLET</strong> and wait for the progress bar to finish</li>
+<li>Once the Droplet is created you can view the IP address</li>
+</ul>
+<hr>
+<h4><em><strong>Creating the initial server</strong></em></h4>
+<p>Follow the beginning steps on setting up the <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu">Initial Server with Ubuntu</a></p>
+<hr>
+<h4><em><strong>Install the Apache Web Server</strong></em></h4>
+<p><strong>Step 1:</strong> Update then install apache</p>
+<pre><code class="language-sh">sudo apt update
+</code></pre>
+<pre><code class="language-sh">sudo apt install apache2
+</code></pre>
+<p><strong>Step 2:</strong> Adjust the firewall by allowing different aspects and check the status</p>
+<pre><code class="language-sh">sudo ufw allow 'Apache'
+</code></pre>
+<pre><code class="language-sh">sudo ufw status
+</code></pre>
+<p><strong>Step 3:</strong> You can now start checking and running the web server</p>
+<pre><code class="language-sh">sudo systemctl status apache2
+</code></pre>
+<p>then you will want to get the server IP, you can get that by entering this command</p>
+<pre><code class="language-sh">curl -4 icanhazip.com
+</code></pre>
+<p>and after typing <strong>http://(the_ip)</strong> into your browser you should have it up and running and see the defult &quot;Apache2 Default Page&quot;</p>
+<p>There are a couple commands that you can use to manage the server</p>
+<ul>
+<li>STOP <code>sudo systemctl stop apache2</code></li>
+<li>START <code>sudo systemctl start apache2</code></li>
+<li>RESTART <code>sudo systemctl restart apache2</code></li>
+<li>RELOAD <code>sudo systemctl reload apache2</code></li>
+<li>DISABLE <code>sudo systemctl disable apache2</code></li>
+<li>ENABLE <code>sudo system enable apache2</code></li>
+</ul>
+<p><strong>Step 4:</strong> Next you can create a virtual host, and set up a domain with your purchased domain</p>
+<p><em>you can create a directory for your domain and assign ownership to it</em></p>
+<pre><code class="language-sh">sudo mkdir /var/www/(*your_domain*)
+sudo chown -R $USER:$USER /var/www/(*your_domain*)
+sudo chmod -R 755 /var/www/(*your_domain*)
+</code></pre>
+<p><em>next you can create an index page and add base code to it</em></p>
+<pre><code class="language-sh">sudo nano /var/www/(*your_domain*)/index.html
+</code></pre>
+<pre><code class="language-sh">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Welcome to (*your_domain*)!&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Success! The (*your_domain*) virtual host is working!&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;    
+</code></pre>
+<p><em>now create a config for you page rather then modify the default one</em></p>
+<pre><code class="language-sh">sudo nano /etc/apache2/sites-available/(*your_domain*).conf
+</code></pre>
+<pre><code class="language-sh">&lt;VirtualHost *:80&gt;
+    ServerAdmin webmaster@localhost
+    ServerName your_domain
+    ServerAlias www.your_domain
+    DocumentRoot /var/www/your_domain
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre>
+<p><em>now you can enable the file, disable the default, test for config errors and implement the changes</em></p>
+<pre><code class="language-sh">sudo a2ensite (*your_domain*).conf
+</code></pre>
+<pre><code class="language-sh">sudo a2dissite 000-default.conf
+</code></pre>
+<pre><code class="language-sh">sudo apache2ctl configtest
+</code></pre>
+<pre><code class="language-sh">sudo systemctl restart apache2
+</code></pre>
+<p>Now using the <strong>http://(<em>your_domain</em>)</strong> you should be able to see your HTML changes on the web!</p>
+<hr>
+<h4><em><strong>How it can be used</strong></em></h4>
+<p>SSG and creating a droplet in Digital Ocean can be useful for many different reasons. It provides an easy way to host your own website with high preformance and fast response time. It is one of the best ways to create and keep tab on a site you are creating and plan to deploy.</p>
+<hr>

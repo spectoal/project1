@@ -1,0 +1,126 @@
+<h1><a href="/blog"> < </a></h1>
+<div style="text-align: right;">
+    <h1><a href="/index">HOME</a></h1>
+</div>
+<h1>Blog Post 2</h1>
+<h2><em>Framework</em></h2>
+<hr>
+<p><a href="https://www.sanity.io/glossary/eleventy#:~:text=Eleventy%2C%20often%20referred%20to%20as,grained%20control%20over%20their%20websites."><strong>11ty</strong></a> is a static site generator that is known for simplicity, flexability, and speed; aiding in a finer control over the website. It is minimalistic, making it easy to set up and doesn't have a specific folder/file structure, without a need for server-side processing resulting in a faster page load. <a href="https://www.geeksforgeeks.org/introduction-to-tailwind-css/"><strong>TailwindCSS</strong></a> is a CSS framework that has built-in classes to utilize without having to write custom CSS. This helps developers to build efficient, responsive and visually appealing interfaces with less effort.</p>
+<p>11ty and Tailwind are easy to set up and once you have it installed, it is very easy to use, I am going to help you through installing and setting up the basic framework page for 11ty.</p>
+<h5>Prerequisites</h5>
+<ul>
+<li>Basic HTML and CSS knowledge</li>
+<li><a href="https://www.freecodecamp.org/news/what-exactly-is-node-js-ae36e97449f5/">Node.js</a> installed</li>
+<li>Text editor (e.g. Visual Studios Code)</li>
+</ul>
+<hr>
+<h4><em><strong>Steps to set up</strong></em></h4>
+<p><strong>Step 1:</strong> Set up a new 11ty project</p>
+<p>Create a new directory for the project and get to the terminal</p>
+<pre><code class="language-sh">mkdir my-11ty-project
+cd my-11ty-project
+</code></pre>
+<p>Initialize a new npm project</p>
+<pre><code class="language-sh">npm init -y
+</code></pre>
+<p>Install 11ty</p>
+<pre><code class="language-sh">npm i -D @11ty/eleventy 
+</code></pre>
+<p>Then create the rest of the files needed for the project</p>
+<blockquote>
+<p>index.html
+eleventy.js</p>
+</blockquote>
+<p><strong>Step 2:</strong> Installing TailwindCSS</p>
+<p>Initialize it</p>
+<pre><code class="language-sh">npm init -y
+</code></pre>
+<p>Install TailwindCSS</p>
+<pre><code class="language-sh">npm i tailwindcss
+</code></pre>
+<p>Create a source folder with the <em>styles.css</em> file in it and add the following components</p>
+<pre><code class="language-sh">@tailwind base;
+@tailwind components;
+@tailwind utilities
+</code></pre>
+<p>Link the <em>styles.css</em> to the HTML file</p>
+<pre><code class="language-sh">&lt;link href=&quot;styles.css&quot; rel=&quot;stylesheet&quot;&gt;
+</code></pre>
+<p>Now thats its installed, you can start to create the page using its utility classes.</p>
+<hr>
+<h4><em><strong>Creating a Layout</strong></em></h4>
+<p><strong>Step 1:</strong> In the <code>my-11ty-project</code> create a folder <code>src</code> , then inside the <code>src</code> create the <code>index.html</code> file</p>
+<blockquote>
+<p>the <code>src</code> folder will act as a source directory where most of the files will be created in</p>
+</blockquote>
+<p><strong>Step 2:</strong> Create an <code>_includes</code> file in the <code>src</code> folder</p>
+<p><strong>Step 3:</strong> Create a <code>.eleventy.js</code> file in the <code>my-11ty-project</code></p>
+<blockquote>
+<p>This will be the configuration file, containing the code for how you want your 11ty structure to work, add the following lines of code...</p>
+</blockquote>
+<pre><code class="language-sh">module.exports = function(eleventyConfig) {
+    return {
+        dir: {
+            input: 'src',
+            includes: '_includes',
+            output: '_site',
+        },
+        templateFormats: ['md', 'njk', 'html'],
+        markdownTemplateEngine: 'njk',
+        htmlTemplateEngine: 'njk',
+        dataTemplateEngine: 'njk',
+    };
+}
+</code></pre>
+<p><strong>Step 4:</strong> In the <code>package.json</code> file under <strong><em>&quot;scripts&quot;: {}</em></strong> create a &quot;start&quot; command</p>
+<pre><code class="language-sh">&quot;start&quot;: &quot;npx eleventy --serve&quot;,
+</code></pre>
+<p><strong>Step 5:</strong> Get started with the normal document headers</p>
+<ul>
+<li>add something simple to the body like</li>
+</ul>
+<pre><code class="language-sh">&lt;h1&gt; Hello World&lt;/h1&gt;
+</code></pre>
+<p><strong>Step 6:</strong> Once somethig has been added to the body, run the code using the start command</p>
+<pre><code class="language-sh">npm start
+</code></pre>
+<p>After it runs there will be a Local host link</p>
+<p>SERVER AT    <strong>http://localhost:8080/</strong></p>
+<p>Copy and paste that into your browser and you will have the basic creation of a page with your text &quot;Hello World&quot;.</p>
+<p><strong>Step 7:</strong> Under the <code>_includes</code> folder, create another folder <code>layout</code> and inside that you will create a <code>base.html</code>. Take the basic HTML heading and paste that into the <code>base.html</code> file. This base file will have a content change in the <strong><em>title</em></strong> and <strong><em>body</em></strong></p>
+<pre><code class="language-sh">&lt;title&gt;&lt;/title&gt;
+</code></pre>
+<pre><code class="language-sh">&lt;body&gt;
+    
+&lt;/body&gt;    
+</code></pre>
+<blockquote>
+<p>This is created so we can pass different titles and body into the header code for different pages</p>
+</blockquote>
+<p>The <code>index.html</code> file will now only consist of the header that we added earlier, with added code to create the layout we want</p>
+<pre><code class="language-sh">---
+layout: layouts/base.html
+title: &quot;My&quot; 11ty Page&quot;
+---
+
+&lt;h1&gt;Hello World&lt;/h1&gt;
+</code></pre>
+<p><strong>Step 8:</strong> We can now create another page using that uses that layout, under the <code>src</code> create another page <code>second.html</code> and add the layout code</p>
+<pre><code class="language-sh">---
+layout: layouts/base.html
+title: Second Page
+---
+
+&lt;h1&gt; This is the &lt;/h1&gt;
+</code></pre>
+<blockquote>
+<p>We can use the templates to put in the &quot;Second Page&quot; onto the page instead of typing it out</p>
+</blockquote>
+<p><strong>Step 9:</strong> Now to make it so we can access the second page, we will add a link to the <strong><em>second page</em></strong> on the <code>index.html</code> file</p>
+<pre><code class="language-sh">&lt;a href=&quot;/second&quot;&gt;Second Page&lt;/a&gt;
+</code></pre>
+<p>And on the first page there should be a link to access the second page</p>
+<hr>
+<h4><em><strong>Pages Created</strong></em></h4>
+<p>Now you have created two pages with a link to get to the second only using HTML, able to add what ever you want to them. The next steps would be to start creating a CSS style to it making it look nicer and visually appealing. But now you know the ease in 11ty and the way to create your first pages.</p>
+<hr>
