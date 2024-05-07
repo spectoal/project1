@@ -10,6 +10,7 @@ module.exports = function(eleventyConfig) {
    eleventyConfig.addWatchTarget("src/css");
 
    eleventyConfig.addShortcode("Card", Card);
+   
 
     return {
         dir: {
@@ -23,3 +24,5 @@ module.exports = function(eleventyConfig) {
         dataTemplateEngine: 'njk',
     };
 }
+
+  
